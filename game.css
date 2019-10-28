@@ -1,0 +1,72 @@
+.main {
+  background-color: LightSkyBlue;
+  width: 100%;
+  padding: 20px 0 !important;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  background-color: orange;
+  margin-bottom: 20px;
+}
+
+.status h2 {
+  display: inline-block;
+  margin-top: 0 !important;
+}
+
+.status-box {
+  padding-top: 14px;
+}
+
+.score {
+  background-color: LightGoldenRodYellow;
+  width: 124px;
+}
+
+.turn {
+  background-color: LightGoldenRodYellow;
+  width: 200px;
+  margin: auto;
+}
+
+.piece-box {
+  display: inline-block;
+}
+
+#board {
+  width: 524.8px;
+  margin: 40px auto;
+}
+
+.tile {
+  width: 60px;
+  height: 60px;
+  background-color: LightGoldenRodYellow;
+  display: inline-block;
+  margin: 0 2.8px;
+}
+
+.available:hover {
+  box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+  background-color: #E8C774;
+}
+
+.piece {
+  border: 1px solid black;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  margin: auto;
+  vertical-align: middle;
+  margin-top: 2.5px;
+}
+
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+}
