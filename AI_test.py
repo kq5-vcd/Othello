@@ -369,7 +369,7 @@ def alpha_beta_move(depth):
         board_temp = copy.deepcopy(game_board)
         make_move(board_temp, move, turn) 
 
-        points = Alpha_Beta(board_temp, depth, 3 - turn, min_eval_board, max_eval_board)
+        points = Alpha_Beta(board_temp, depth, 3 - turn, max_points, max_eval_board)
                 
         if points > max_points:
             max_points = points
@@ -391,7 +391,7 @@ def alpha_beta_sorted_move(depth):
         board_temp = copy.deepcopy(game_board)
         make_move(board_temp, move, turn) 
 
-        points = Alpha_Beta_sorted(board_temp, depth, 3 - turn, min_eval_board, max_eval_board)
+        points = Alpha_Beta_sorted(board_temp, depth, 3 - turn, max_points, max_eval_board)
                 
         if points > max_points:
             max_points = points
@@ -463,8 +463,12 @@ def player_mode():
     elif mode == 4:
         return minimax_move(2)
     elif mode == 5:
-        return alpha_beta_move(4)
+        return alpha_beta_move(2)
     elif mode == 6:
+        return alpha_beta_sorted_move(2)
+    elif mode == 7:
+        return alpha_beta_move(4)
+    elif mode == 8:
         return alpha_beta_sorted_move(4)
 
 def go():
