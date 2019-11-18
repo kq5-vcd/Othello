@@ -18,7 +18,7 @@ direction = [[0, 1], [1, 1], [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1
 turn = 0
 end = 0
 p1 = 1
-p2 = 5
+p2 = 9
 mode = 0
 
 def print_board(board):
@@ -271,7 +271,7 @@ def Alpha_Beta_sorted(board, depth, player, Alpha, Beta):
             board_temp = copy.deepcopy(board)
 
             make_move(board_temp, piece, player) 
-            val = Alpha_Beta(board_temp, depth - 1, 3 - player, Alpha, Beta)
+            val = Alpha_Beta_sorted(board_temp, depth - 1, 3 - player, Alpha, Beta)
             
             #print(val, "Alpha_Beta_sorted() val maximize_player")
 
@@ -293,7 +293,7 @@ def Alpha_Beta_sorted(board, depth, player, Alpha, Beta):
             board_temp = copy.deepcopy(board)
 
             make_move(board_temp, piece, player) 
-            val = Alpha_Beta(board_temp, depth - 1, 3 - player, Alpha, Beta)
+            val = Alpha_Beta_sorted(board_temp, depth - 1, 3 - player, Alpha, Beta)
             
             #print(val, "Alpha_Beta_sorted() val minimize_player")
 
@@ -470,6 +470,8 @@ def player_mode():
         return alpha_beta_move(4)
     elif mode == 8:
         return alpha_beta_sorted_move(4)
+    elif mode == 9:
+        return alpha_beta_sorted_move(6)
 
 def go():
     #print("TURN: ", turn)
