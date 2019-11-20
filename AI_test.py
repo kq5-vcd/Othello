@@ -18,13 +18,13 @@ direction = [[0, 1], [1, 1], [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1
 turn = 0
 end = 0
 p1 = 1
-p2 = 9
+p2 = 1
 mode = 0
 
 def print_board(board):
     for x in range(8):
         for y in range(8):
-            print(board[x][y], end=" ")
+            print(board[x][y], end = " ")
         print()
 
 def init_board():
@@ -103,10 +103,8 @@ def available_tiles(board, player):
 
                             if case[0:2] == piece[0:2]:
                                 case[2].extend(lst for lst in piece[2] if lst not in case[2])
+                                one_piece.remove(piece)
                                 break
-                        else:
-                            continue
-                        break
                     else:
                         valid_tiles = valid_tiles + one_piece
 
@@ -143,17 +141,16 @@ def eval_board(board):
     #print(total, "eval_board()")
     return total
 
-def sort_nodes(board, player, tiles, dir):
+def sort_nodes(tiles):
     sorted_nodes = []
 
     for piece in tiles:
-        board_temp = copy.deepcopy(game_board)
-        make_move(board_temp, piece, player) 
-        
-        sorted_nodes.append([piece, eval_board(board_temp)])
+        x = piece[0]
+        y = piece[1]
+        sorted_nodes.append([piece, val_board[x][y]])
 
     #print(sorted_nodes, "sort_nodes()")
-    sorted_nodes = sorted(sorted_nodes, key = lambda node: node[1], reverse = dir)
+    sorted_nodes = sorted(sorted_nodes, key = lambda node: node[1], reverse = True)
     sorted_nodes = [node[0] for node in sorted_nodes]
     #print(sorted_nodes, "sort_nodes()")
 
@@ -264,7 +261,7 @@ def Alpha_Beta_sorted(board, depth, player, Alpha, Beta):
         return eval_board(board)
 
     if player == turn:
-        tiles = sort_nodes(board, player, valid_tiles, True)
+        tiles = sort_nodes(valid_tiles)
         best_value = min_eval_board
 
         for piece in tiles:
@@ -286,7 +283,7 @@ def Alpha_Beta_sorted(board, depth, player, Alpha, Beta):
             
         #print(Alpha, "Alpha_Beta_sorted() Alpha maximize_player")
     else: # minimizingPlayer
-        tiles = sort_nodes(board, player, valid_tiles, False)
+        tiles = sort_nodes(valid_tiles)
         best_value = max_eval_board
 
         for piece in tiles:
@@ -337,6 +334,25 @@ def move_by_tiles():
     #print(move, "move_by_tiles()")
     return move
 
+def local_maximization():
+    valid_tiles = available_tiles(game_board, turn)
+
+    reward = -120
+    move = []
+
+    for piece in valid_tiles:
+        x = piece[0]
+        y = piece[1]
+
+        if(val_board[x][y] > reward):
+            reward = val_board[x][y]
+            move = piece
+        elif(val_board[x][y] == reward):
+            if random.randint(0, 1):
+                move = piece
+
+    return move
+
 def minimax_move(depth):
     max_points = min_eval_board
     valid_tiles = available_tiles(game_board, turn)
@@ -384,10 +400,11 @@ def alpha_beta_move(depth):
 def alpha_beta_sorted_move(depth):
     max_points = min_eval_board
     valid_tiles = available_tiles(game_board, turn)
+    tiles = sort_nodes(valid_tiles)
     #print(valid_tiles, "alpha_beta_move() valid_tiles")
     best_move = []
 
-    for move in valid_tiles:
+    for move in tiles:
         board_temp = copy.deepcopy(game_board)
         make_move(board_temp, move, turn) 
 
@@ -459,7 +476,7 @@ def player_mode():
     elif mode == 2:
         return move_by_tiles()
     elif mode == 3:
-        return minimax_move(0)
+        return local_maximization()
     elif mode == 4:
         return minimax_move(2)
     elif mode == 5:
@@ -476,7 +493,7 @@ def player_mode():
 def go():
     #print("TURN: ", turn)
     
-    piece = make_move(game_board, player_mode(), turn)
+    make_move(game_board, player_mode(), turn)
 
     #print_board(board)
     #print()
