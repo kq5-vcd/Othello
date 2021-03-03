@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>OTHELLO</title>
+
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+
+    <link rel="stylesheet" href="othello.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="/eel.js"></script>
+  </head>
+  <body>
+    <div class="container main">
+      <h1 class="title">OTHELLO</h1>
+
+      <div class="status container-fluid">
+        <div class="row">
+          <div class="score status-box player-red col-sm-2 col-md-2 col-lg-2">
+            <div class="piece-box">
+              <div class="piece red"></div>
+            </div>
+            <h2 id="red"></h2>
+          </div>
+
+          <div class="col-sm-8 col-md-8 col-lg-8">
+            <div class="status-box turn">
+              <h2 id="turn">Turn: </h2>
+              <div class="piece-box">
+                <div class="piece blue" id="player"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="score status-box col-sm-2 col-md-2 col-lg-2">
+            <h2 id="blue"></h2>
+            <div class="piece-box" id="float-right">
+              <div class="piece blue"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="board">
+      </div>
+
+      <div class="level">
+        <i class="fa fa-chevron-circle-down" id="neo"></i>
+        <span id="level"></span>
+        <i class="fa fa-chevron-circle-up" id="smith"></i>
+      </div>
+
+      <div class="level reset">
+        <h3 id="reset">NEW GAME</h3>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="othello.js"></script>
+  </body>
+</html>

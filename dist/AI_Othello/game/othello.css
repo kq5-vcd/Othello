@@ -1,0 +1,133 @@
+.main {
+  background-color: LightSkyBlue;
+  width: 100%;
+  padding: 0 0 !important;
+  z-index: 10;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  background-color: orange;
+  margin-bottom: 20px;
+}
+
+.status {
+  padding-bottom: 20px;
+}
+
+.status-box {
+  padding: 10px 10px 4px 10px;
+}
+
+.status-box h2 {
+  display: inline-block;
+  margin-top: 1px !important;
+  font-size: 50px;
+}
+
+.score {
+  background-color: LightGoldenRodYellow;
+  width: 124px;
+}
+
+#turn {
+  float: left;
+}
+
+#player {
+  float: right;
+}
+
+#red {
+  float: right;
+}
+
+#blue {
+  float: left;
+}
+
+#float-right {
+  float: right;
+}
+
+.turn {
+  background-color: LightGoldenRodYellow;
+  width: 250px;
+  margin: auto;
+  padding-bottom: 7px;
+  height: 77px;
+}
+
+.turn div {
+  float: right;
+}
+
+.piece-box {
+  display: inline-block;
+}
+
+#board {
+  width: 524.8px;
+  margin: 20px auto;
+  padding-bottom: 10px;
+}
+
+.tile {
+  width: 60px;
+  height: 60px;
+  background-color: LightGoldenRodYellow;
+  display: inline-block;
+  margin: 0 2.8px;
+}
+
+.available:hover {
+  box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+  background-color: #E8C774;
+  cursor: pointer;
+}
+
+.piece {
+  border: 1px solid black;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  margin: auto;
+  vertical-align: middle;
+  margin-top: 2.5px;
+  transition: transform 0.5s;
+  transition-timing-function: linear;
+}
+
+.red {
+  background-color: #FF2C17;
+}
+
+.blue {
+  background-color: blue;
+  transform: rotateX(180deg);
+}
+
+.level {
+  width: 200px;
+  background-color: LightGoldenRodYellow;
+  font-size: 30px;
+  text-align: center;
+  margin: 5px auto;
+}
+
+#neo {
+  color: #FF2C17;
+  cursor: pointer;
+}
+
+#smith {
+  color: blue;
+  cursor: pointer;
+}
+
+#reset {
+  padding: 10px 0;
+  margin-top: 10px !important;
+  cursor: pointer;
+}
